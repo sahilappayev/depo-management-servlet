@@ -18,5 +18,6 @@ public class CategoryMapper {
         return categoryResponseDto;
     }
 
+    //mapstruct
 
 }

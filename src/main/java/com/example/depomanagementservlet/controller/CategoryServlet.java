@@ -31,9 +31,16 @@ public class CategoryServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        categoryService.create(req.getParameter("categoryName"));
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String action = req.getParameter("action");
+        if ("delete".equals(action)) {
+            categoryService.delete(Integer.valueOf(req.getParameter("id")));
+        } else if ("create".equals(action)) {
+            categoryService.create(req.getParameter("categoryName"));
+        } else if ("update".equals(action)) {
+            // TODO
+        }
         resp.sendRedirect(req.getRequestURI());
     }
+
 }
